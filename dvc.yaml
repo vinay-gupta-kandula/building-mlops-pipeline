@@ -1,0 +1,20 @@
+stages:
+  process_data:
+    cmd: python src/data_processing.py --step process
+    deps:
+      - data/raw/data.csv
+      - src/data_processing.py
+      - src/config.py
+    params:
+      - data.path
+    outs:
+      - data/processed/processed.csv
+
+  validate_data:
+    cmd: python src/data_processing.py --step validate
+    deps:
+      - data/processed/processed.csv
+      - src/data_processing.py
+      - src/config.py
+    outs:
+      - reports/validation_result.json

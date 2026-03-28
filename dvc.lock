@@ -1,0 +1,45 @@
+schema: '2.0'
+stages:
+  process_data:
+    cmd: python src/data_processing.py --step process
+    deps:
+    - path: data/raw/data.csv
+      hash: md5
+      md5: fbcf5ea54cdd59d7d3926c7e4b8c6a76
+      size: 50
+    - path: src/config.py
+      hash: md5
+      md5: f1aa8e8c8a10c529a7b614a538d1f327
+      size: 685
+    - path: src/data_processing.py
+      hash: md5
+      md5: f121adbe00c25a24ec6c400330ad6fe7
+      size: 1648
+    params:
+      params.yaml:
+        data.path: data/processed/processed.csv
+    outs:
+    - path: data/processed/processed.csv
+      hash: md5
+      md5: 8f7a6052902b16f84f0d01d99269e044
+      size: 65
+  validate_data:
+    cmd: python src/data_processing.py --step validate
+    deps:
+    - path: data/processed/processed.csv
+      hash: md5
+      md5: 8f7a6052902b16f84f0d01d99269e044
+      size: 65
+    - path: src/config.py
+      hash: md5
+      md5: f1aa8e8c8a10c529a7b614a538d1f327
+      size: 685
+    - path: src/data_processing.py
+      hash: md5
+      md5: f121adbe00c25a24ec6c400330ad6fe7
+      size: 1648
+    outs:
+    - path: reports/validation_result.json
+      hash: md5
+      md5: 36ff6c4c1445baa75a366562846683c3
+      size: 151

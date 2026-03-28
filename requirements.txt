@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pandas
+scikit-learn
+mlflow==2.11.1
+dvc
+great-expectations
+evidently
+pytest
+pytest-cov
+requests
