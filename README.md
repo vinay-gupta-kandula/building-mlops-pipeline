@@ -39,41 +39,41 @@ The structure below focuses on the parts used during evaluation and day-to-day d
 
 ```text
 building-mlops-pipeline/
-|- data/
-|  |- raw/
-|  |  |- data.csv
-|  |  \- data.csv.dvc
-|  \- processed/
-|     \- processed.csv
-|- src/
-|  |- api/
-|  |  \- main.py
-|  |- __init__.py
-|  |- config.py
-|  |- data_processing.py
-|  |- monitoring.py
-|  |- retrain.py
-|  \- train.py
-|- tests/
-|  |- conftest.py
-|  |- test_api.py
-|  |- test_data_processing.py
-|  |- test_monitoring_retrain.py
-|  \- test_train.py
-|- reports/
-|  |- data_drift_report.html
-|  \- validation_result.json
-|- gx/                              # Great Expectations project files
-|- notebooks/                       # Optional exploration notebooks
-|- .env.example
-|- docker-compose.yml
-|- Dockerfile
-|- Dockerfile.mlflow
-|- dvc.yaml
-|- dvc.lock
-|- params.yaml
-|- requirements.txt
-\- README.md
+├── data/
+│   ├── raw/
+│   │   ├── data.csv
+│   │   └── data.csv.dvc
+│   └── processed/
+│       └── processed.csv
+├── src/
+│   ├── api/
+│   │   └── main.py
+│   ├── __init__.py
+│   ├── config.py
+│   ├── data_processing.py
+│   ├── monitoring.py
+│   ├── retrain.py
+│   └── train.py
+├── tests/
+│   ├── conftest.py
+│   ├── test_api.py
+│   ├── test_data_processing.py
+│   ├── test_monitoring_retrain.py
+│   └── test_train.py
+├── reports/
+│   ├── data_drift_report.html
+│   └── validation_result.json
+├── gx/
+├── notebooks/
+├── .env.example
+├── docker-compose.yml
+├── Dockerfile
+├── Dockerfile.mlflow
+├── dvc.yaml
+├── dvc.lock
+├── params.yaml
+├── requirements.txt
+└── README.md
 ```
 
 Local runtime folders like `mlruns/`, `postgres_data/`, and caches are environment artifacts and are not part of the core source layout.
