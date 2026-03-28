@@ -35,32 +35,48 @@ Pipeline flow:
 
 ## 2) Repository Layout
 
-.
-|-- data/
-|   |-- raw/
-|   |   |-- data.csv
-|   |   |-- data.csv.dvc
-|   |-- processed/
-|       |-- processed.csv
-|-- reports/
-|   |-- validation_result.json
-|   |-- data_drift_report.html
-|-- src/
-|   |-- api/
-|   |   |-- main.py
-|   |-- config.py
-|   |-- data_processing.py
-|   |-- monitoring.py
-|   |-- retrain.py
-|   |-- train.py
-|-- tests/
-|-- docker-compose.yml
-|-- Dockerfile
-|-- Dockerfile.mlflow
-|-- dvc.yaml
-|-- params.yaml
-|-- requirements.txt
-|-- .env.example
+The structure below focuses on the parts used during evaluation and day-to-day development:
+
+```text
+building-mlops-pipeline/
+|- data/
+|  |- raw/
+|  |  |- data.csv
+|  |  \- data.csv.dvc
+|  \- processed/
+|     \- processed.csv
+|- src/
+|  |- api/
+|  |  \- main.py
+|  |- __init__.py
+|  |- config.py
+|  |- data_processing.py
+|  |- monitoring.py
+|  |- retrain.py
+|  \- train.py
+|- tests/
+|  |- conftest.py
+|  |- test_api.py
+|  |- test_data_processing.py
+|  |- test_monitoring_retrain.py
+|  \- test_train.py
+|- reports/
+|  |- data_drift_report.html
+|  \- validation_result.json
+|- gx/                              # Great Expectations project files
+|- notebooks/                       # Optional exploration notebooks
+|- .env.example
+|- docker-compose.yml
+|- Dockerfile
+|- Dockerfile.mlflow
+|- dvc.yaml
+|- dvc.lock
+|- params.yaml
+|- requirements.txt
+\- README.md
+```
+
+Local runtime folders like `mlruns/`, `postgres_data/`, and caches are environment artifacts and are not part of the core source layout.
 
 ## 3) Prerequisites
 
@@ -386,6 +402,4 @@ docker compose logs -f
 - The primary objective is robust lifecycle automation (not SOTA model accuracy).
 - The codebase includes unit and integration-style tests for API, processing, monitoring, and retraining logic.
 
-## 14) License
 
-Use your preferred open-source license (for example MIT) before public release.
